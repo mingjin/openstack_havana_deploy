@@ -18,6 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.host_name = "controller"
     config.vm.provider :virtualbox do |vb|
       vb.customize ["modifyvm", :id, "--memory", 1024]
+      vb.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
     end
   end
 
@@ -28,17 +29,22 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.host_name = "network"
     config.vm.provider :virtualbox do |vb|
       vb.customize ["modifyvm", :id, "--memory", 1024]
+      vb.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
       vb.customize ["modifyvm", :id, "--nicpromisc3", "allow-all"]
+      vb.customize ["modifyvm", :id, "--nicpromisc4", "allow-all"]
     end
   end
 
   config.vm.define "compute1" do |config|
     config.vm.network :private_network, ip: "192.168.33.12" #eth1
     config.vm.network :private_network, ip: "192.168.34.12" #eth2
+    config.vm.network :private_network, ip: "172.16.1.12" #eth3
     config.vm.host_name = "compute1"
     config.vm.provider :virtualbox do |vb|
       vb.customize ["modifyvm", :id, "--memory", 1024]
+      vb.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
       vb.customize ["modifyvm", :id, "--nicpromisc3", "allow-all"]
+      vb.customize ["modifyvm", :id, "--nicpromisc4", "allow-all"]
     end
   end
 
