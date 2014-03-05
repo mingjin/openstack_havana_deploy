@@ -15,7 +15,7 @@ function init() {
   # this script needs ubuntu cloud archive for grizzly, so we are using 12.04 lts.
   apt-get install ubuntu-cloud-keyring
   #echo deb http://ubuntu-cloud.archive.canonical.com/ubuntu precise-updates/havana main >> /etc/apt/sources.list.d/grizzly.list
-  echo deb http://ubuntu-cloud.archive.canonical.com/ubuntu precise-proposed/havana main > /etc/apt/sources.list.d/havana.list
+  echo deb http://ubuntu-cloud.archive.canonical.com/ubuntu precise-updates/havana main > /etc/apt/sources.list.d/havana.list
   apt-get update
 }
 
