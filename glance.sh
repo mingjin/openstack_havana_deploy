@@ -41,12 +41,12 @@ function glance_setup() {
 
 function os_add () {
   # backup exist os image
-  if [[ -f ./os.img ]]; then
-    mv ./os.img ./os.img.bk
-  fi
+#  if [[ -f ./os.img ]]; then
+#    mv ./os.img ./os.img.bk
+#  fi
 
   # download cirros os image
-  wget --no-check-certificate ${os_image_url} -o ./os.img
+#  wget --no-check-certificate ${os_image_url} -o ./os.img
 
   # add os image to glance
   glance image-create --name="${os_image_name}" --is-public true --container-format bare --disk-format qcow2 < ./os.img

@@ -41,18 +41,18 @@ function cinder_setup() {
   # input database for cinder
   cinder-manage db sync
 
-  if echo "$cinder_volume" | grep "loop" ; then
-    dd if=/dev/zero of=/var/lib/cinder/volumes-disk bs=2 count=0 seek=7g
-    file=/var/lib/cinder/volumes-disk
-    modprobe loop
-    losetup $cinder_volume $file
-    pvcreate $cinder_volume
-    vgcreate cinder-volumes $cinder_volume
-  else
+#  if echo "$cinder_volume" | grep "loop" ; then
+#    dd if=/dev/zero of=/var/lib/cinder/volumes-disk bs=2 count=0 seek=7g
+#    file=/var/lib/cinder/volumes-disk
+#    modprobe loop
+#    losetup $cinder_volume $file
+#    pvcreate $cinder_volume
+#    vgcreate cinder-volumes $cinder_volume
+#  else
     # create pyshical volume and volume group
-    pvcreate ${cinder_volume}
-    vgcreate cinder-volumes ${cinder_volume}
-  fi
+#    pvcreate ${cinder_volume}
+#    vgcreate cinder-volumes ${cinder_volume}
+#  fi
 
   # disable tgt daemon
   stop_service tgt
