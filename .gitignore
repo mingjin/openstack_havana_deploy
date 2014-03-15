@@ -1,3 +1,4 @@
 openstack-archives
 .vagrant
 os.img
+.DS_Store
